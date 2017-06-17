@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import TableRow from './table_row'
 
 class Table extends Component {
-  // constructor(props, context) {
-  //   super(props, context);
-  // }
   render() {
     var rows = [];
-    console.log(this.props);
     this.props.dataSource.forEach(function(row) {
       rows.push(<TableRow FirstName={row.FirstName} LastName={row.LastName} Country={row.Country} Street={row.Street} City={row.City} State={row.State} Zip={row.Zip} Phone={row.Phone} />);
     });

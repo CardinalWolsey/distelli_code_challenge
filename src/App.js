@@ -1,73 +1,11 @@
 import React, { Component } from 'react';
+
 import './App.css';
-import Table from './table'
 
-// const data = [
-//   {'FirstName': 'Zachary', 'LastName': 'Borgetti', 'Country': 'USA', 'Street': '2234 3rd Ave Ste 3', 'City': 'Seattle', 'State': 'WA', 'Zip': '98101', 'Phone': '123-778-5741'},
-//   {'FirstName': 'Spencer', 'LastName': 'Willings', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'Seattle', 'State': 'WA', 'Zip': '98105', 'Phone': '206-555-8888'},
-//   {'FirstName': 'Roger', 'LastName': 'Caldwell', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'Seattle', 'State': 'WA', 'Zip': '98105', 'Phone': '206-955-8888'},
-//   {'FirstName': 'Alfred', 'LastName': 'Lu', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'Seattle', 'State': 'WA', 'Zip': '98105', 'Phone': '206-555-8228'},
-// ];
-
-class SortSelector extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.state = {
-      selectValue: 'FirstName',
-    };
-    // console.log('state');
-    // console.log(this.state);
-    // console.log('end state');
-  }
-
-  sortItems(column) {
-    // var sorted = data.sort(function (a, b) {
-    //   return a.column - b.column;
-    // });
-    var sorted = this.props.dataSource.sort(function(a, b) {
-      var nameA = a[column].toUpperCase();
-      var nameB = b[column].toUpperCase();
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-      return 0
-    });
-    this.props.updateDataSource(sorted);
-    console.log(sorted);
-  }
-
-  handleChange(e) {
-    this.setState({selectValue:e.target.value});
-    this.sortItems(e.target.value);
-  }
-
-  render() {
-    var message = 'you selected ' + this.state.selectValue;
-
-    return (
-      <div>
-        <select
-          value={this.state.selectValue}
-          onChange={this.handleChange.bind(this)}
-          >
-          <option value="FirstName">First Name</option>
-          <option value="LastName">Last Name</option>
-          <option value="Country">Country</option>
-          <option value="Street">Address</option>
-          <option value="City">City</option>
-          <option value="State">State</option>
-          <option value="Zip">Zip</option>
-          <option value="Phone">Phone</option>
-        </select>
-        <p>{message}</p>
-      </div>
-    );
-  }
-}
+import PaginationArrows from './pagination_arrows';
+import PaginationSelector from './pagination_selector';
+import SortSelector from './sort_selector';
+import Table from './table';
 
 class App extends Component {
   constructor(props, context) {
@@ -79,16 +17,83 @@ class App extends Component {
         {'FirstName': 'Spencer', 'LastName': 'Willings', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'Seattle', 'State': 'WA', 'Zip': '98105', 'Phone': '206-555-8888'},
         {'FirstName': 'Roger', 'LastName': 'Caldwell', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'Seattle', 'State': 'WA', 'Zip': '98105', 'Phone': '206-955-8888'},
         {'FirstName': 'Alfred', 'LastName': 'Lu', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'Seattle', 'State': 'WA', 'Zip': '98105', 'Phone': '123-778-5741'},
+        {'FirstName': 'Ron', 'LastName': 'Patrick', 'Country': 'UK', 'Street': '10 Downing Street', 'City': 'London', 'State': 'a', 'Zip': 'b', 'Phone': '+44 20 7123 4567'},
+        {'FirstName': 'John', 'LastName': 'Smith', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'Seattle', 'State': 'WA', 'Zip': '98105', 'Phone': '777-555-1111'},
+        {'FirstName': 'Chris', 'LastName': 'Cacciapaglia', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'San Francisco', 'State': 'CA', 'Zip': '98105', 'Phone': '987-654-3210'},
       ],
+      sortValue: 'FirstName',
+      currentPage: 1,
+      itemsPerPage: 3,
+      renderData: [],
     };
-    console.log(this.state);
+
+  }
+
+  componentWillMount() {
+    this.sortItems(this.state.sortValue);
+    this.populateRenderData(this.state.itemsPerPage, this.state.currentPage);
+  }
+
+  updateSortValue(value) {
+    this.setState({
+      sortValue: String(value),
+      currentPage: 1
+    });
+
+    this.sortItems(value);
+    this.populateRenderData(this.state.itemsPerPage, 1);
+  }
+
+  sortItems(column) {
+    var sorted = this.state.data.sort(function(a, b) {
+      var nameA = a[column].toUpperCase();
+      var nameB = b[column].toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0
+    });
+
+    this.updateDataSource(sorted);
   }
 
   updateDataSource(data) {
     this.setState({
       data: Object.assign([], this.state, data)
-    })
-    console.log(data);
+    });
+  }
+
+  updateItemsPerPage(value) {
+    this.setState({
+      itemsPerPage: value,
+      currentPage: 1
+    });
+
+    this.populateRenderData(value, 1);
+  }
+
+
+  populateRenderData(count, page) {
+    const indexOfLastRow = count * page;
+    const indexOfFirstRow = indexOfLastRow - count;
+
+    this.setState({
+      renderData: Object.assign([], this.state.data.slice(indexOfFirstRow, indexOfLastRow))
+    });
+  }
+
+  //TODO: clean this up.  look into using map to create groups
+  updateCurrentPage(value) {
+    if((this.state.currentPage + value > 0) && ((this.state.currentPage + value) * this.state.itemsPerPage < this.state.data.length + this.state.itemsPerPage)) {
+      this.setState({
+        currentPage: this.state.currentPage + value
+      });
+    }
+
+    this.populateRenderData(this.state.itemsPerPage, this.state.currentPage + value)
   }
 
   render() {
@@ -103,11 +108,20 @@ class App extends Component {
             <div className="Head"></div>
             <div className="Contents">
               <SortSelector
-                dataSource={this.state.data}
-                updateDataSource={this.updateDataSource.bind(this)}>
-              </SortSelector>
+                sortItems={this.updateSortValue.bind(this)}
+                value={this.state.sortValue}
+                />
+              <PaginationSelector
+                updateItemsPerPage={this.updateItemsPerPage.bind(this)}
+                value={this.state.itemsPerPage}
+                />
+              <PaginationArrows
+                currentPage={this.state.currentPage}
+                itemsPerPage={this.state.itemsPerPage}
+                updateCurrentPage={this.updateCurrentPage.bind(this)}
+                />
               <Table
-                dataSource={this.state.data}
+                dataSource={this.state.renderData}
                 />
 
             </div>
