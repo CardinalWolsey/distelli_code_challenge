@@ -13,7 +13,7 @@ class PaginationArrows extends Component {
   render() {
     return (
       <div>
-        <span className="Pagination Range">{(this.props.currentPage * this.props.itemsPerPage) - (this.props.itemsPerPage - 1)}-{this.props.currentPage * this.props.itemsPerPage}</span>
+        <span className="Pagination Range">{(this.props.currentPage * this.props.itemsPerPage) - (this.props.itemsPerPage - 1)}-{(this.props.currentPage * this.props.itemsPerPage < this.props.dataLength) ? (this.props.currentPage * this.props.itemsPerPage) : this.props.dataLength}</span>
         <span className="Pagination Of"> of </span>
         <span className="Pagination">{this.props.dataLength}</span>
         <a
