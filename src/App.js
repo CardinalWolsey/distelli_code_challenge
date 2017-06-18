@@ -38,10 +38,19 @@ class App extends Component {
     this.setState({
       sortValue: String(value),
       currentPage: 1
+    }, function() {
+      this.sortItems(this.state.sortValue);
+      this.populateRenderData(this.state.itemsPerPage, this.state.currentPage);
     });
+  }
 
-    this.sortItems(value);
-    this.populateRenderData(this.state.itemsPerPage, 1);
+  updateItemsPerPage(value) {
+    this.setState({
+      itemsPerPage: value,
+      currentPage: 1
+    }, function() {
+      this.populateRenderData(this.state.itemsPerPage, this.state.currentPage);
+    });
   }
 
   sortItems(column) {
@@ -66,16 +75,6 @@ class App extends Component {
     });
   }
 
-  updateItemsPerPage(value) {
-    this.setState({
-      itemsPerPage: value,
-      currentPage: 1
-    });
-
-    this.populateRenderData(value, 1);
-  }
-
-
   populateRenderData(count, page) {
     const indexOfLastRow = count * page;
     const indexOfFirstRow = indexOfLastRow - count;
@@ -85,15 +84,24 @@ class App extends Component {
     });
   }
 
-  //TODO: clean this up.  look into using map to create groups
   updateCurrentPage(value) {
-    if((this.state.currentPage + value > 0) && ((this.state.currentPage + value) * this.state.itemsPerPage < this.state.data.length + this.state.itemsPerPage)) {
-      this.setState({
-        currentPage: this.state.currentPage + value
-      });
+    if(value < 0) {
+      if(this.state.currentPage > 1) {
+        this.setState({
+          currentPage: this.state.currentPage + value
+        }, function() {
+          this.populateRenderData(this.state.itemsPerPage, this.state.currentPage)
+        });
+      }
+    } else if(value > 0) {
+      if(this.state.currentPage * this.state.itemsPerPage < this.state.data.length) {
+        this.setState({
+          currentPage: this.state.currentPage + value
+        }, function() {
+          this.populateRenderData(this.state.itemsPerPage, this.state.currentPage)
+        });
+      }
     }
-
-    this.populateRenderData(this.state.itemsPerPage, this.state.currentPage + value)
   }
 
   render() {
