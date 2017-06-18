@@ -21,6 +21,7 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <script src="./script.js" charset="utf-8"></script>
   </head>
   <body>
     <noscript>
@@ -28,9 +29,9 @@
     </noscript>
     <nav>
       <ul>
-        <li>Nav Item 1</li>
-        <li>Nav Item 2</li>
-        <li>Nav Item 3</li>
+        <li><a class="selected" id="Nav1" href="" onclick="updateSelected(event)">Nav Item 1</a></li>
+        <li><a class="" id="Nav2" href="" onclick="updateSelected(event)">Nav Item 2</a></li>
+        <li><a class="" id="Nav3" href="" onclick="updateSelected(event)">Nav Item 3</a></li>
       </ul>
     </nav>
     <div id="root"></div>
