@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 class TableRow extends Component {
   render() {
-    // console.log(this.props);
-    //TODO: figure out how to have a unique key for each row, and all the td keys may be unnecessary
     return (
       <tr>
         <td

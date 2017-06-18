@@ -13,20 +13,19 @@ class App extends Component {
 
     this.state = {
       data: [
-        {'FirstName': 'Zachary', 'LastName': 'Borgetti', 'Country': 'USA', 'Street': '2234 3rd Ave Ste 3', 'City': 'Seattle', 'State': 'WA', 'Zip': '98101', 'Phone': '206-555-8228'},
-        {'FirstName': 'Spencer', 'LastName': 'Willings', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'Seattle', 'State': 'WA', 'Zip': '98105', 'Phone': '206-555-8888'},
-        {'FirstName': 'Roger', 'LastName': 'Caldwell', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'Seattle', 'State': 'WA', 'Zip': '98105', 'Phone': '206-955-8888'},
-        {'FirstName': 'Alfred', 'LastName': 'Lu', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'Seattle', 'State': 'WA', 'Zip': '98105', 'Phone': '123-778-5741'},
-        {'FirstName': 'Ron', 'LastName': 'Patrick', 'Country': 'UK', 'Street': '10 Downing Street', 'City': 'London', 'State': 'a', 'Zip': 'b', 'Phone': '+44 20 7123 4567'},
-        {'FirstName': 'John', 'LastName': 'Smith', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'Seattle', 'State': 'WA', 'Zip': '98105', 'Phone': '777-555-1111'},
-        {'FirstName': 'Chris', 'LastName': 'Cacciapaglia', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'San Francisco', 'State': 'CA', 'Zip': '98105', 'Phone': '987-654-3210'},
+        {'id': '0', 'FirstName': 'Zachary', 'LastName': 'Borgetti', 'Country': 'USA', 'Street': '2234 3rd Ave Ste 3', 'City': 'Seattle', 'State': 'WA', 'Zip': '98101', 'Phone': '206-555-8228'},
+        {'id': '1', 'FirstName': 'Spencer', 'LastName': 'Willings', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'Seattle', 'State': 'WA', 'Zip': '98105', 'Phone': '206-555-8888'},
+        {'id': '2', 'FirstName': 'Roger', 'LastName': 'Caldwell', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'Seattle', 'State': 'WA', 'Zip': '98105', 'Phone': '206-955-8888'},
+        {'id': '3', 'FirstName': 'Alfred', 'LastName': 'Lu', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'Seattle', 'State': 'WA', 'Zip': '98105', 'Phone': '123-778-5741'},
+        {'id': '4', 'FirstName': 'Ron', 'LastName': 'Patrick', 'Country': 'UK', 'Street': '10 Downing Street', 'City': 'London', 'State': 'Stratford', 'Zip': 'Avon', 'Phone': '+44 20 7123 4567'},
+        {'id': '5', 'FirstName': 'John', 'LastName': 'Smith', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'Seattle', 'State': 'WA', 'Zip': '98105', 'Phone': '777-555-1111'},
+        {'id': '6', 'FirstName': 'Chris', 'LastName': 'Cacciapaglia', 'Country': 'USA', 'Street': '112 NE 57th St', 'City': 'San Francisco', 'State': 'CA', 'Zip': '98105', 'Phone': '987-654-3210'},
       ],
       sortValue: 'FirstName',
       currentPage: 1,
       itemsPerPage: 5,
       renderData: [],
     };
-
   }
 
   componentWillMount() {

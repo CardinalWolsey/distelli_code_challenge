@@ -43,6 +43,7 @@
   color: #1DAFE9;
   font-weight: 600;
   font-size: .75rem;
+  cursor: pointer;
 }
 
 .Arrow {
@@ -72,6 +73,7 @@
 .PaginationArrows {
   color: #1DAFE9;
   padding-left: 10px;
+  cursor: pointer;
 }
 
 table {

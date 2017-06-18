@@ -5,7 +5,7 @@ class Table extends Component {
   render() {
     var rows = [];
     this.props.dataSource.forEach(function(row) {
-      rows.push(<TableRow FirstName={row.FirstName} LastName={row.LastName} Country={row.Country} Street={row.Street} City={row.City} State={row.State} Zip={row.Zip} Phone={row.Phone} />);
+      rows.push(<TableRow key={row.id}FirstName={row.FirstName} LastName={row.LastName} Country={row.Country} Street={row.Street} City={row.City} State={row.State} Zip={row.Zip} Phone={row.Phone} />);
     });
 
     return (
