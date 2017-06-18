@@ -13,12 +13,16 @@ class PaginationArrows extends Component {
   render() {
     return (
       <div>
-        <span>showing {(this.props.currentPage * this.props.itemsPerPage) - (this.props.itemsPerPage - 1)} - {this.props.currentPage * this.props.itemsPerPage} </span>
+        <span className="Pagination Range">{(this.props.currentPage * this.props.itemsPerPage) - (this.props.itemsPerPage - 1)}-{this.props.currentPage * this.props.itemsPerPage}</span>
+        <span className="Pagination Of"> of </span>
+        <span className="Pagination">{this.props.dataLength}</span>
         <a
-          onClick={this.handleLeftClick.bind(this)}>previous</a>
+          className="Pagination PaginationArrows"
+          onClick={this.handleLeftClick.bind(this)}>&#60;</a>
         <span> </span>
         <a
-          onClick={this.handleRightClick.bind(this)}>next</a>
+          className="Pagination PaginationArrows"
+          onClick={this.handleRightClick.bind(this)}>&#62;</a>
       </div>
     );
   }

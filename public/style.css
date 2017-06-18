@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+nav {
+  margin: 0;
+	padding: 0;
+  height: 50px;
+  width: 100%;
+  background: #282653;
+  font-size: .75rem;
+  font-weight: 400;
+  color: #95A2AA;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 50px;
+  height: inherit;
+}
+
+nav li {
+  float: left;
+  height: inherit;
+  line-height: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+nav li:hover {
+  background: #7F56C5;
+  color: #FFFFFF;
+}

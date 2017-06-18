@@ -23,7 +23,7 @@ class App extends Component {
       ],
       sortValue: 'FirstName',
       currentPage: 1,
-      itemsPerPage: 3,
+      itemsPerPage: 5,
       renderData: [],
     };
 
@@ -98,37 +98,40 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="Nav"></div>
-        <div className="Container">
-          <div className="Controls">
-
+      <div className="Table">
+        <div className="Controls">
+          <div className="ControlsLeft">
+            <p className="ListHeader">List of Awesome</p>
+            <p className="DropdownLabel">Sort by:</p>
+            <SortSelector
+              sortItems={this.updateSortValue.bind(this)}
+              value={this.state.sortValue}
+              />
+            <p className="Arrow">&#9660;</p>
           </div>
-          <div className="Table">
-            <div className="Head"></div>
-            <div className="Contents">
-              <SortSelector
-                sortItems={this.updateSortValue.bind(this)}
-                value={this.state.sortValue}
-                />
-              <PaginationSelector
-                updateItemsPerPage={this.updateItemsPerPage.bind(this)}
-                value={this.state.itemsPerPage}
-                />
-              <PaginationArrows
-                currentPage={this.state.currentPage}
-                itemsPerPage={this.state.itemsPerPage}
-                updateCurrentPage={this.updateCurrentPage.bind(this)}
-                />
-              <Table
-                dataSource={this.state.renderData}
-                />
-
-            </div>
+          <div className="ControlsRight">
+            <p className="DropdownLabel">items per page:</p>
+            <PaginationSelector
+              updateItemsPerPage={this.updateItemsPerPage.bind(this)}
+              value={this.state.itemsPerPage}
+              />
+            <p className="Arrow">&#9660;</p>
+            <PaginationArrows
+              dataLength={this.state.data.length}
+              currentPage={this.state.currentPage}
+              itemsPerPage={this.state.itemsPerPage}
+              updateCurrentPage={this.updateCurrentPage.bind(this)}
+              />
           </div>
         </div>
-      </div>
+        <div className="Contents">
 
+
+          <Table
+            dataSource={this.state.renderData}
+            />
+        </div>
+      </div>
     );
   }
 }

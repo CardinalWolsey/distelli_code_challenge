@@ -10,6 +10,7 @@ class SortSelector extends Component {
     return (
       <div>
         <select
+          className="DropdownSelector"
           value={this.props.value}
           onChange={this.handleChange.bind(this)}
           >

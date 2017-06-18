@@ -10,11 +10,10 @@ class PaginationSelector extends Component {
     return (
       <div>
         <select
+          className="DropdownSelector"
           value={this.props.value}
           onChange={this.handleEvent.bind(this)}
           >
-          <option value="2">2</option>
-          <option value="3">3</option>
           <option value="5">5</option>
           <option value="10">10</option>
           <option value="25">25</option>

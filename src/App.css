@@ -1,19 +1,74 @@
-.App {
-  text-align: center;
+.Table {
+  margin-left: 50px;
+  margin-top: 30px;
+  margin-right: 50px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.Controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #7F56C5;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.Controls p {
+  margin: 0;
 }
 
-.App-intro {
-  font-size: large;
+.ControlsLeft {
+  display: flex;
+  align-items: baseline;
+}
+
+.ListHeader {
+  padding-right: 7px;
+  border-right-color: #BCBEC0;
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+
+.DropdownLabel {
+  font-size: .75rem;
+  font-weight: 400;
+  padding-left: 7px;
+  padding-right: 3px;
+}
+
+.DropdownSelector {
+  -webkit-appearance: none;
+  border: none;
+  color: #1DAFE9;
+  font-weight: 600;
+  font-size: .75rem;
+}
+
+.Arrow {
+  color: #1DAFE9;
+  font-weight: 600;
+  font-size: .5rem;
+}
+
+.ControlsRight {
+  display: flex;
+  align-items: baseline;
+}
+
+.Pagination {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.Range {
+  padding-left: 30px;
+}
+
+.Of {
+  font-weight: 400;
+}
+
+.PaginationArrows {
+  color: #1DAFE9;
+  padding-left: 10px;
 }
