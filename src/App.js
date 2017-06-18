@@ -125,8 +125,6 @@ class App extends Component {
           </div>
         </div>
         <div className="Contents">
-
-
           <Table
             dataSource={this.state.renderData}
             />
