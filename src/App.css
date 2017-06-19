@@ -41,6 +41,7 @@
   -webkit-appearance: none;
   border: none;
   color: #1DAFE9;
+  background: #FFFFFF;
   font-weight: 600;
   font-size: .75rem;
   cursor: pointer;
@@ -91,11 +92,21 @@ thead tr {
 }
 
 thead th {
-  padding: 0 0 0 13px;
+  padding: 0;
+  text-align: left;
+}
+
+thead button {
+  padding-Left: 13px;
+  border: none;
+  background: #CACBCE;
   font-size: .75rem;
   font-weight: 700;
   color: #282653;
-  text-align: left;
+}
+
+thead button:focus {
+  outline: 0;
 }
 
 table th:first-child{

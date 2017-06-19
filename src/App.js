@@ -134,6 +134,7 @@ class App extends Component {
         <div className="Contents">
           <Table
             dataSource={this.state.renderData}
+            sortItems={this.updateSortValue.bind(this)}
             />
         </div>
       </div>
